@@ -1,0 +1,36 @@
+{
+  "name": "npm-task-watcher",
+  "version": "1.0.0",
+  "description": "Compiles scss (./style.css), js (./main.min.js). `npm watch` to compile when files change. `npm run build` to build files once, `npm start` to watch file changes and refresh browser. Minifies and auto-prefixes.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "browser-sync": "^2.26.7",
+    "cssnano": "^4.1.10",
+    "node-sass": "^4.13.1",
+    "onchange": "^6.1.0",
+    "postcss-cli": "^7.1.0",
+    "uglify-js": "^3.7.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css:sass1": "node-sass --output-style -o ./ src/scss",
+    "css:sass": "node-sass --output-style compressed -o ./ src/scss --watch",
+    "css:postcss": "postcss style.css --map=false -r",
+    "css": "npm run css:sass1 && npm run css:postcss",
+    "js": "uglifyjs src/js/*.js --compress --mangle --mangle-toplevel --output ./main.min.js",
+    "bs": "browser-sync start --server --files './*.css, ./*.js, ./*.php, ./*.html, ./views/**/*.twig, ./templates/**/*.twig'",
+    "build": "npm run js & npm run css",
+    "watch:js": "onchange \"src/js/*.js\" -- npm run js",
+    "watch:css": "onchange \"src/scss/**/*.scss\" -- npm run css",
+    "watch": "npm run watch:css & npm run watch:js",
+    "start": "npm run watch:css & npm run watch:js & npm run bs"
+  },
+  "browserslist": [
+    "IE 11",
+    "last 2 versions"
+  ],
+  "author": "Geoff Yuen",
+  "license": "ISC"
+}
