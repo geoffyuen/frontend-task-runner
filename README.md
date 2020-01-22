@@ -8,3 +8,4 @@ Npm script to compile scss (./style.css), js (./main.min.js).
 ✅ cssnano  
 ✅ autoprefixer  
 ✅ uglifyjs
+✅ browser-sync
