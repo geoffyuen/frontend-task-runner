@@ -7,5 +7,7 @@ Npm script to compile scss (./style.css), js (./main.min.js).
 ✅ Sass  
 ✅ cssnano  
 ✅ autoprefixer  
+✅ svgspritesheet
+✅ svgo    
 ✅ uglifyjs
 ✅ browser-sync

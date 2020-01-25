@@ -1,13 +1,13 @@
 /*! test */
 $red: #f00;
 html {
-    // background: $red;
+    background: $red;
     height: 100%;
 }
 body {
     min-height: 100%;
     overflow-x: hidden;
-    display: grid;
+    // display: grid;
     font-family: sans-serif;
     color: black;
 }
