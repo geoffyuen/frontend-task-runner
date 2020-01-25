@@ -1,6 +1,6 @@
 {
   "name": "npm-task-watcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compiles scss (./style.css), js (./main.min.js). `npm watch` to compile when files change. `npm run build` to build files once, `npm start` to watch file changes and refresh browser. Minifies and auto-prefixes.",
   "main": "index.js",
   "dependencies": {},
@@ -30,20 +30,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "php": "php -S localhost:8000",
-
     "css": "node-sass --output-style -o ./ src/scss",
     "postcss": "postcss style.css --map=false -r",
-    
     "js": "uglifyjs src/js/*.js --compress --mangle --mangle-toplevel --output ./main.min.js",
-    
     "svg": "svgo -f src/svg -o img/svg --config='{ \"plugins\": [{ \"removeViewBox\": false }, { \"removeDimensions\": true }] }'",
-    
     "presprites": "svgo -f src/sprites -o src/sprites/opt --config='{ \"plugins\": [{ \"removeViewBox\": false }, { \"removeDimensions\": true }] }'",
     "sprites": "svgstore -o img/sprites.svg src/sprites/opt/*.svg --inline",
     "postsprites": "rm ./src/sprites/opt/*.svg",
-    
     "bs": "browser-sync start --server --files './img/**/*' './*.css' './*.js' './*.php' './*.html' './views/**/*.twig' './templates/**/*.twig'",
-    
     "w:js": "onchange \"src/js/*.js\" -- npm run js",
     "w:css": "onchange \"src/scss/**/*.scss\" -- npm run css",
     "w:svg": "onchange \"src/svg/**/*.svg\" -- npm run svg",
