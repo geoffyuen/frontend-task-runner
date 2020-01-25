@@ -4,8 +4,10 @@ jQuery(document).ready(function($) {
 		console.log('symbols:');
 			$(thenode).find("symbol").each(function(){
                 if (this.viewBox.baseVal){
-                    console.log("<svg class='' width='" + this.viewBox.baseVal.width + "' height='" + this.viewBox.baseVal.height + "'><use xlink:href='#" + this.id + "'/></svg>");
-                    $("#sprites").append('<svg class="icon"><use xlink:href="#' + this.id + '" /></svg>');    
+					console.log("<svg class='' width='" + this.viewBox.baseVal.width + "' height='" + this.viewBox.baseVal.height + "'><use xlink:href='#" + this.id + "'/></svg>");
+					if ($("#sprites").length) {
+						$("#sprites").append('<svg class="icon"><use xlink:href="#' + this.id + '" /></svg>');    
+					}
                 }
 			});
 	}
@@ -13,7 +15,8 @@ jQuery(document).ready(function($) {
 	$.get( (typeof apppath === 'undefined' ? "." : apppath) + "/img/sprites.svg", function(data) {
 		$("body").prepend("<div id='svg-inject' style='display: none'>" + new XMLSerializer().serializeToString(data.documentElement) + "</div>")
 	})
-		.done(function(){ svg_debug('#svg-inject') })
+	// .success(function(){ svg_debug('#svg-inject') }) // old jQuery
+	.done(function(){ svg_debug('#svg-inject') }) // jQuery 3+
 	;
 
 });
