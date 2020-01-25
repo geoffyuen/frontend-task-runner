@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
                 if (this.viewBox.baseVal){
 					console.log("<svg class='' width='" + this.viewBox.baseVal.width + "' height='" + this.viewBox.baseVal.height + "'><use xlink:href='#" + this.id + "'/></svg>");
 					if ($("#sprites").length) {
-						$("#sprites").append('<svg class="icon"><use xlink:href="#' + this.id + '" /></svg>');    
+						$("#sprites").append('<svg class="icon mh4" width="64" height="64"><use xlink:href="#' + this.id + '" /></svg>');    
 					}
                 }
 			});
