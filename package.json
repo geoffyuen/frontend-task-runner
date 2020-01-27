@@ -28,11 +28,13 @@
     "svgin": "./src/svg",
     "svgout": "./img",
     "spritein": "./src/sprites",
-    "spriteout": "./img"
+    "spriteout": "./img",
+    "proxy": "--proxy 'https://localdomain.test'",
+    "phpserver": "--proxy 'localhost:8000'",
+    "static": "--server"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "php": "php -S localhost:8000",
     "css": "node-sass -o $npm_package_config_sassout $npm_package_config_sassin",
     "postcss": "postcss ./*.css ./css/**/*.css --map=false -r",
     "js": "uglifyjs src/js/*.js --compress --mangle --mangle-toplevel --output ./main.min.js",
@@ -46,7 +48,8 @@
     "w:svg": "onchange \"src/svg/**/*.svg\" -- onerror \"npm run svg --silent\" --title \"svg error\"",
     "w:sprites": "onchange \"src/sprites/*.svg\" -- onerror \"npm run sprites --silent\" --title \"sprite error\"",
     "watch": "npm run w:css & npm run w:js & npm run w:svg & npm run w:sprites",
-    "start": "npm run watch & npm run bs"
+    "start": "npm run watch & npm run bs",
+    "php": "php -S 127.0.0.1:8000 index.php & npm run watch & browser-sync start --proxy '127.0.0.1:8000' --files './img/**/*' './*.css' './css/*.css' './*.js' './*.php' './*.html' './views/**/*.twig' './templates/**/*.twig'"
   },
   "browserslist": [
     "IE 11",
