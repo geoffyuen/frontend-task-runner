@@ -1,7 +1,7 @@
 {
   "name": "npm-task-watcher",
   "version": "1.0.1",
-  "description": "Task runner to watch and process Sass, JS, SVG, SVG sprites and start Browser-sync. MacOS and maybe Linux only.",
+  "description": "Task runner to watch and process Sass, JS, SVG, SVG sprites and start Browser-sync. MacOS and maybe Linux only. `npm start`",
   "main": "index.js",
   "dependencies": {
     "normalize.css": "^8.0.1"
@@ -33,18 +33,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "php": "php -S localhost:8000",
-    "css": "onerror \"node-sass -o $npm_package_config_sassout $npm_package_config_sassin\"",
-    "postcss": "onerror \"postcss ./*.css ./css/**/*.css --map=false -r\"",
-    "js": "onerror \"uglifyjs src/js/*.js --compress --mangle --mangle-toplevel --output ./main.min.js\"",
+    "css": "node-sass -o $npm_package_config_sassout $npm_package_config_sassin",
+    "postcss": "postcss ./*.css ./css/**/*.css --map=false -r",
+    "js": "uglifyjs src/js/*.js --compress --mangle --mangle-toplevel --output ./main.min.js",
     "svg": "svgo -f s$npm_package_config_svgin -o $npm_package_config_svgout --config='{ \"plugins\": [{ \"removeViewBox\": false }, { \"removeDimensions\": true }] }'",
     "presprites": "svgo -f $npm_package_config_spritein -o ${npm_package_config_spritein}/opt --config='{ \"plugins\": [{ \"removeViewBox\": false }, { \"removeDimensions\": true }] }'",
-    "sprites": "onerror \"svgstore -o ${npm_package_config_spriteout}/sprites.svg ${npm_package_config_spritein}/opt/*.svg --inline\"",
+    "sprites": "svgstore -o ${npm_package_config_spriteout}/sprites.svg ${npm_package_config_spritein}/opt/*.svg --inline",
     "postsprites": "rm ${npm_package_config_spritein}/opt/*.svg",
     "bs": "browser-sync start --server --files './img/**/*' './*.css' './css/*.css' './*.js' './*.php' './*.html' './views/**/*.twig' './templates/**/*.twig'",
-    "w:js": "onchange \"src/js/*.js\" -- npm run js",
-    "w:css": "onchange \"src/scss/**/*.scss\" -- npm run css",
-    "w:svg": "onchange \"src/svg/**/*.svg\" -- npm run svg",
-    "w:sprites": "onchange \"src/sprites/*.svg\" -- npm run sprites",
+    "w:js": "onchange \"src/js/*.js\" -- onerror \"npm run js --silent\" --title \"js error\"",
+    "w:css": "onchange \"src/scss/**/*.scss\" -- onerror \"npm run css --silent\" --title \"Sass/CSS error\"",
+    "w:svg": "onchange \"src/svg/**/*.svg\" -- onerror \"npm run svg --silent\" --title \"svg error\"",
+    "w:sprites": "onchange \"src/sprites/*.svg\" -- onerror \"npm run sprites --silent\" --title \"sprite error\"",
     "watch": "npm run w:css & npm run w:js & npm run w:svg & npm run w:sprites",
     "start": "npm run watch & npm run bs"
   },
