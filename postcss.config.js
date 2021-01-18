@@ -1,11 +1,12 @@
 module.exports = {
     plugins: {
-        'cssnano': { 
+        'cssnano': {
             preset: 'default',
             // removeAllButFirst: true
         },
         'autoprefixer': {
             // See browserlist in package.json
+            grid: true,
         }
     }
 }

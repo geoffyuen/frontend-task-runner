@@ -8,6 +8,7 @@ html {
 body {
     min-height: 100%;
     overflow-x: hidden;
+// Test autoprefixer grid (see postcss.config.js):
     display: grid;
     font-family: sans-serif;
     color: $foreground;
