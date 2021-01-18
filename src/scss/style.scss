@@ -1,7 +1,8 @@
 /*! test */
-$red: #f00;
+$background: #000;
+$foreground: #fff;
 html {
-    background: $red;
+    background: $background;
     height: 100%;
 }
 body {
@@ -9,8 +10,9 @@ body {
     overflow-x: hidden;
     display: grid;
     font-family: sans-serif;
-    color: black;
+    color: $foreground;
 }
+// Test autoprefixer:
 ::placeholder {
     color: gray;
 }
