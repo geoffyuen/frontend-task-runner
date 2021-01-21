@@ -44,3 +44,17 @@ svg {
         }
     }
 }
+.visuallyhidden {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+}
+.visuallyhidden-a11y {
+    @extend .visuallyhidden;
+    &:focus {
+        width: auto;
+        height: auto;
+        position: static;
+    }
+}
