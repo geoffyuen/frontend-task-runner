@@ -1,6 +1,8 @@
 /*! this commment will not be removed */
-$background: #aba;
-$foreground: #132;
+$background: #fff;
+$foreground: #000;
+$link: #f00;
+$linkhover: #0f0;
 html {
     background: $background;
     height: 100%;
@@ -19,17 +21,26 @@ body {
 ::placeholder {
     color: green;
 }
-h1,h2,h3,h4,h5,h6 {
-    margin-bottom: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+svg {
+  fill: currentColor;
 }
 .outline {
     outline: 1px solid red;
 }
 #sprites {
     .icon {
+        color: $link;
         fill: currentColor;
         &:hover {
-            color: green;
+            color: $linkhover;
         }
     }
 }

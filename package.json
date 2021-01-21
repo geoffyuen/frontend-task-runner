@@ -1,9 +1,11 @@
 {
   "name": "npm-task-watcher",
-  "version": "1.0.0",
-  "description": "Compiles scss (./style.css), js (./main.min.js). `npm watch` to compile when files change. `npm run build` to build files once, `npm start` to watch file changes and refresh browser. Minifies and auto-prefixes.",
+  "version": "1.0.1",
+  "description": "Task runner to watch and process Sass, JS, SVG, SVG sprites and start Browser-sync. MacOS and maybe Linux only. `npm start`",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.13",
@@ -16,6 +18,21 @@
     "postcss-cli": "^7.1.2",
     "svgstore-cli": "^2.0.0",
     "uglify-js": "^3.12.4"
+  },
+  "config": {
+    "sassin": "./src/scss",
+    "sassout": "./",
+    "jsin": "./src/js",
+    "jsout": "./js",
+    "imgin": "./src/img",
+    "imgout": "./img",
+    "svgin": "./src/svg",
+    "svgout": "./img",
+    "spritein": "./src/sprites",
+    "spriteout": "./img",
+    "proxy": "--proxy 'https://localdomain.test'",
+    "phpserver": "--proxy 'localhost:8000'",
+    "static": "--server"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
