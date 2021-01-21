@@ -1,18 +1,58 @@
-Npm script to compile scss (./style.css), js (./main.min.js).
+# NPM Scripts Template for websites
 
-- `npm watch` to compile when files change.
-- `npm run build` to build files once,
-- `npm start` to watch file changes and refresh browser.
+Supports:
 
-✅ Sass
-✅ cssnano
-✅ autoprefixer
-✅ uglifyjs
+- ✅ Sass (src/scss/\*.scss) --> (./*.css)
+- ✅ cssnano
+- ✅ autoprefixer
+- ✅ uglifyjs (src/js/*) --> (./main.min.js)
+- ✅ image optimization (src/img/\*.{jpg,png,svg}) --> (./img/*)
+- ✅ svg spritesheet generation (src/sprites/*.svg) --> (./img/sprites.svg)
+- ✅ error notifcations
+## How do?
 
-Notes:
+`npm install` and then:
 
-- remember: postcss settings are in postcss.config.js
+- `npm start` to watch file changes, build and refresh browser with Browsersync
+- `npm watch` to just watch and compile, no Browsersync
+- `npm run build` to build files once
 
-Gotchas:
+## Notes:
 
-- When saving an .scss file, onchange triggers at least 2-3 times for some reason
+- for testing, add a `div#sprites` in your body to see the sprites
+- src directory contains all files that will be transformed: images, svg, js, scss
+  - anything in `src` is not nessessary for production because they are all compiled to folders outside of src
+- postcss, cssnano, autoprefixer settings are in `postcss.config.js`
+- autoprefixer `browserslist` ranges are in `package.json`
+- Sass: anything in `src/scss/*.scss` will be compiled to root
+	- if scss file begins with _ then it will not be compiled - usefull for scss includes
+
+svgo params: https://github.com/svg/svgo#what-it-can-do
+
+## Sprites:
+
+- save svgs in src/svgsprites
+- each svg needs a viewBox attribute to be able to be resized with width and height attributes
+- remove the fill attribute in the svg to use css fill property
+- when setting width/height, the svg will fit inside proportionally (like css background-size: contain)
+- use in your html:
+
+```
+<svg width="{{ your width }}" height="{{ your height }}">
+	<title>Optional Title for accessibility</title>
+	<use xlink:href="#svg-{{ filename (no extension) }}"></use>
+</svg>
+```
+
+## Gotchas:
+
+- ~~When saving an .scss file, onchange triggers at least 2-6 times for some reason~~ Cause was postcss and plugins. Now we're using temp files (src/css/*) to bypass - yuck
+- if for some reason there are many Browsersyncs running, `ps` to see running bash tasks, `pkill node` and `pkill open`
+- if you get caniuse-lite warnings try: `npx browserslist@latest --update-db`
+
+## Todo:
+
+- scss linting
+- js linting
+- execute `composer install` after `npm install` (or visa versa?)
+- notifications when there's no error?

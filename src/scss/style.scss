@@ -1,6 +1,6 @@
-/*! test */
-$background: #000;
-$foreground: #fff;
+/*! this commment will not be removed */
+$background: #aba;
+$foreground: #132;
 html {
     background: $background;
     height: 100%;
@@ -9,17 +9,27 @@ body {
     min-height: 100%;
     overflow-x: hidden;
 // Test autoprefixer grid (see postcss.config.js):
-    display: grid;
     font-family: sans-serif;
     color: $foreground;
 }
 // Test autoprefixer:
+.grid {
+    display: grid;
+}
 ::placeholder {
-    color: gray;
+    color: green;
 }
 h1,h2,h3,h4,h5,h6 {
     margin-bottom: 0;
 }
 .outline {
     outline: 1px solid red;
+}
+#sprites {
+    .icon {
+        fill: currentColor;
+        &:hover {
+            color: green;
+        }
+    }
 }
