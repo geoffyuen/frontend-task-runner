@@ -1,5 +1,6 @@
 /*! this commment will not be removed */
-$background: #888;
+
+$background: #fff;
 $foreground: #000;
 $link: #f00;
 $linkhover: #0f0;
@@ -7,34 +8,41 @@ html {
     background: $background;
     height: 100%;
 }
+
 body {
     min-height: 100%;
     overflow-x: hidden;
-// Test autoprefixer grid (see postcss.config.js):
+    // Test autoprefixer grid (see postcss.config.js):
     font-family: sans-serif;
     color: $foreground;
 }
+
 // Test autoprefixer:
 .grid {
     display: grid;
 }
+
 ::placeholder {
     color: green;
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
+
 svg {
-  fill: currentColor;
+    fill: currentColor;
 }
+
 .outline {
     outline: 1px solid red;
 }
+
 #sprites {
     .icon {
         color: $link;
@@ -44,12 +52,14 @@ svg {
         }
     }
 }
+
 .visuallyhidden {
     width: 0;
     height: 0;
     overflow: hidden;
     position: absolute;
 }
+
 .visuallyhidden-a11y {
     @extend .visuallyhidden;
     &:focus {
