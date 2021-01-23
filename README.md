@@ -51,7 +51,6 @@ svgo params: https://github.com/svg/svgo#what-it-can-do
 - ~~When saving an .scss file, onchange triggers at least 2-6 times for some reason~~ Cause was postcss and plugins. Now we're using temp files (src/css/*) to bypass - yuck
 - if for some reason there are many Browsersyncs running, `ps` to see running bash tasks, `pkill node` and `pkill open`
 - if you get caniuse-lite warnings try: `npx browserslist@latest --update-db`
-- modifying the spritesheet will not reload the browser; need to find a way to trigger the frontend script
 
 
 ## Todo:
@@ -67,3 +66,6 @@ svgo params: https://github.com/svg/svgo#what-it-can-do
 - Window branch:
 	- using & in Windows or wsl2 doesn't seem to work; npm-run-all fixes this; very strange...
 	- using node-sass v5; older version won't run on Windows without Python; so dumb
+- Removing Gulp as the task running I had to add:
+	- npm-run-all (cross-platform run commands)
+	- onchange to watch changes

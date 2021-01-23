@@ -42,6 +42,7 @@
         "img": "onerror -t 'Image Error' \"imagemin --out-dir=img src/img/**/*.{png,jpg,gif,svg}\"",
         "presprites": "onerror  -t 'SVGO Error' \"svgo --enable=prefixIds --disable=removeViewBox -f src/svgsprites -o src/svgspritestemp\"",
         "sprites": "onerror  -t 'SVGStore Error' \"svgstore --enable= -o img/sprites.svg -p svg- --inline src/svgspritestemp/**/*.svg\"",
+        "postsprites": "browser-sync reload",
         "build": "npm run js & npm run css & npm run img & npm run sprites",
         "bs": "browser-sync start --server --files './*.css, ./*.js, ./**/*.php, ./*.html, ./img/*, ./views/**/*.twig, ./templates/**/*.twig'",
         "watch:js": "onchange \"src/js/*.js\" -- npm run js",
