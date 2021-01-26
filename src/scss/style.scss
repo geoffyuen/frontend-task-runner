@@ -1,25 +1,70 @@
-/*! test */
-$background: #000;
-$foreground: #fff;
+/*! this commment will not be removed */
+
+$background: #888;
+$foreground: #000;
+$link: #f00;
+$linkhover: #0f0;
 html {
     background: $background;
     height: 100%;
 }
+
 body {
     min-height: 100%;
     overflow-x: hidden;
-// Test autoprefixer grid (see postcss.config.js):
-    display: grid;
+    // Test autoprefixer grid (see postcss.config.js):
     font-family: sans-serif;
     color: $foreground;
 }
+
 // Test autoprefixer:
-::placeholder {
-    color: gray;
+.grid {
+    display: grid;
 }
-h1,h2,h3,h4,h5,h6 {
+
+::placeholder {
+    color: green;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin-bottom: 0;
 }
+
+svg {
+    fill: currentColor;
+}
+
 .outline {
     outline: 1px solid red;
+}
+
+#sprites {
+    .icon {
+        color: $link;
+        fill: currentColor;
+        &:hover {
+            color: $linkhover;
+        }
+    }
+}
+
+.visuallyhidden {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+}
+
+.visuallyhidden-a11y {
+    @extend .visuallyhidden;
+    &:focus {
+        width: auto;
+        height: auto;
+        position: static;
+    }
 }
